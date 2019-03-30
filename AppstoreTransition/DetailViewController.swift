@@ -23,7 +23,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegateFlowLayout
         cV.translatesAutoresizingMaskIntoConstraints = false
         cV.register(TextCell.self, forCellWithReuseIdentifier: TextCell.cellId)
         cV.register(DetailCell.self, forCellWithReuseIdentifier: DetailCell.cellId)
-        cV.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        cV.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cV.delegate = self
         cV.dataSource = self
         return cV
@@ -46,11 +46,11 @@ class DetailViewController: UIViewController, UICollectionViewDelegateFlowLayout
         if indexPath.item == 0 {
             return .init(width: self.collectionView.bounds.width, height: DetailCell.height)
         }
-        return .init(width: self.collectionView.bounds.width, height: 100)
+        return .init(width: self.collectionView.bounds.width, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -63,6 +63,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegateFlowLayout
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCell.cellId, for: indexPath) as! TextCell
+        cell.configure(ItemText.protoTypes[indexPath.section])
         return cell
     }
 }

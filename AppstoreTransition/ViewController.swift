@@ -15,7 +15,7 @@ class ViewController: UIViewController {
             collectionView?.dataSource = self
             collectionView?.delegate = self
             collectionView?.register(DetailCell.self, forCellWithReuseIdentifier: DetailCell.cellId)
-            collectionView?.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        //    collectionView?.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
 
         }
     }
