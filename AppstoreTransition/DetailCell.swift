@@ -14,7 +14,6 @@ class DetailCell: UICollectionViewCell {
     
     let imageView: UIImageView = {
         let iV = UIImageView()
-        iV.image = #imageLiteral(resourceName: "donut")
         iV.contentMode = .scaleAspectFill
         iV.translatesAutoresizingMaskIntoConstraints = false
         return iV
@@ -22,7 +21,6 @@ class DetailCell: UICollectionViewCell {
     
     let topLabel: UILabel = {
         let l  = UILabel()
-        l.text = "Donut time"
         l.font = UIFont.systemFont(ofSize: 22)
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
@@ -30,7 +28,6 @@ class DetailCell: UICollectionViewCell {
     
     let mediumLabel: UILabel = {
         let l  = UILabel()
-        l.text = "Best Places to eat Donuts!"
         l.font = UIFont.systemFont(ofSize: 19)
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
@@ -40,7 +37,6 @@ class DetailCell: UICollectionViewCell {
         let l  = UILabel()
         l.numberOfLines = 0
         l.font = UIFont.systemFont(ofSize: 14)
-        l.text = "The best place in yhe world to eat donuts is bla bla, you sould go!"
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -57,9 +53,17 @@ class DetailCell: UICollectionViewCell {
         setUp()
     }
     
+    func configure(model: Item) {
+        
+        imageView.image = model.image
+        topLabel.text = model.title
+        mediumLabel.text = model.subTitle
+        bottomLabel.text = model.detailTitle
+        backgroundColor = model.backgroundColor
+    }
+    
     private func setUp() {
         
-        backgroundColor = #colorLiteral(red: 1, green: 0.9428719878, blue: 0.4756966233, alpha: 1)
         clipsToBounds = true
         
         let imageContainerView = UIView()

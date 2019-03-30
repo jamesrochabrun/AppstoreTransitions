@@ -14,6 +14,8 @@
 		09017974224FDA32005B5AF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09017972224FDA32005B5AF9 /* LaunchScreen.storyboard */; };
 		0901797C224FDF61005B5AF9 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901797B224FDF61005B5AF9 /* DetailCell.swift */; };
 		0901797E224FF3F7005B5AF9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901797D224FF3F7005B5AF9 /* DetailViewController.swift */; };
+		090179802250217D005B5AF9 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0901797F2250217D005B5AF9 /* Items.swift */; };
+		09017982225027D9005B5AF9 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09017981225027D9005B5AF9 /* TextCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		09017975224FDA32005B5AF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0901797B224FDF61005B5AF9 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		0901797D224FF3F7005B5AF9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0901797F2250217D005B5AF9 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		09017981225027D9005B5AF9 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				09017972224FDA32005B5AF9 /* LaunchScreen.storyboard */,
 				09017975224FDA32005B5AF9 /* Info.plist */,
 				0901797B224FDF61005B5AF9 /* DetailCell.swift */,
+				09017981225027D9005B5AF9 /* TextCell.swift */,
+				0901797F2250217D005B5AF9 /* Items.swift */,
 			);
 			path = AppstoreTransition;
 			sourceTree = "<group>";
@@ -142,8 +148,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0901796C224FDA31005B5AF9 /* ViewController.swift in Sources */,
+				090179802250217D005B5AF9 /* Items.swift in Sources */,
 				0901796A224FDA31005B5AF9 /* AppDelegate.swift in Sources */,
 				0901797C224FDF61005B5AF9 /* DetailCell.swift in Sources */,
+				09017982225027D9005B5AF9 /* TextCell.swift in Sources */,
 				0901797E224FF3F7005B5AF9 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

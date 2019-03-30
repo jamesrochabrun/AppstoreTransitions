@@ -11,6 +11,13 @@ import UIKit
 
 class DetailViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    var item: Item? {
+        didSet {
+            view.backgroundColor = item?.backgroundColor
+            collectionView.reloadData()
+        }
+    }
+    
     lazy var collectionView: UICollectionView = {
         let cV = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         cV.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +35,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegateFlowLayout
      //   collectionView.contentInsetAdjustmentBehavior = .never
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
@@ -50,8 +57,9 @@ class DetailViewController: UIViewController, UICollectionViewDelegateFlowLayout
         
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCell.cellId, for: indexPath) as! DetailCell
-            cell.layer.cornerRadius = 0
-          //  cell.clipsToBounds = true
+            if let item = self.item {
+                cell.configure(model: item)
+            }
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCell.cellId, for: indexPath) as! TextCell
@@ -60,16 +68,3 @@ class DetailViewController: UIViewController, UICollectionViewDelegateFlowLayout
 }
 
 
-class TextCell: UICollectionViewCell {
-    
-    static let cellId = String(describing: TextCell.self)
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = #colorLiteral(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}

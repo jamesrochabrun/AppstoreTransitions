@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView?.dataSource = self
@@ -39,6 +38,8 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCell.cellId, for: indexPath) as! DetailCell
         cell.layer.cornerRadius = 16.0
+        let item = ItemViewModel.items[indexPath.item]
+        cell.configure(model: item)
         return cell
     }
     
@@ -64,14 +65,16 @@ extension ViewController: UICollectionViewDelegate {
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         guard let absoluteFrame = cell.absoluteCoordinate() else { return }
-        handlePresent(absoluteFrame: absoluteFrame)
+        let item = ItemViewModel.items[indexPath.item]
+        handlePresent(absoluteFrame: absoluteFrame, item: item)
     }
 
-    fileprivate func handlePresent(absoluteFrame: CGRect) {
+    fileprivate func handlePresent(absoluteFrame: CGRect, item: Item) {
         
         startingFrame = absoluteFrame
         
         let newVC = DetailViewController()
+        newVC.item = item
         let expandedVCView = newVC.view!
         expandedVCView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(expandedVCView)
@@ -107,7 +110,7 @@ extension ViewController: UICollectionViewDelegate {
             if self.fullDetailViewController.collectionView.contentOffset != CGPoint.zero {
                 self.fullDetailViewController.collectionView.setContentOffset(CGPoint.zero, animated: false)
             }
-            self.fullDetailViewController.collectionView.backgroundColor = .clear
+            self.fullDetailViewController.collectionView.backgroundColor = self.fullDetailViewController.view.backgroundColor
             self.fullDetailViewController.collectionView.layer.cornerRadius = 16.0
             self.topConstraint?.constant = self.startingFrame.origin.y
             self.leadingConstraint?.constant = self.startingFrame.origin.x
