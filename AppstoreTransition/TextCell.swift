@@ -25,6 +25,7 @@ class TextCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(mediumLabel)
+        backgroundColor = .white
         
         NSLayoutConstraint.activate([
             mediumLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),

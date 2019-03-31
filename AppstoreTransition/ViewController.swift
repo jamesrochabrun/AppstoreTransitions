@@ -110,6 +110,7 @@ extension ViewController: UICollectionViewDelegate {
             if self.fullDetailViewController.collectionView.contentOffset != CGPoint.zero {
                 self.fullDetailViewController.collectionView.setContentOffset(CGPoint.zero, animated: false)
             }
+            // this one is to make the status bar has the same color.
             self.fullDetailViewController.collectionView.backgroundColor = self.fullDetailViewController.view.backgroundColor
             self.fullDetailViewController.collectionView.layer.cornerRadius = 16.0
             self.topConstraint?.constant = self.startingFrame.origin.y

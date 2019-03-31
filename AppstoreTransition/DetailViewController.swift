@@ -14,7 +14,8 @@ class DetailViewController: UIViewController, UICollectionViewDelegateFlowLayout
     var item: Item? {
         didSet {
             view.backgroundColor = item?.backgroundColor
-            collectionView.reloadData()
+            //  helps to avoid weird flash, not 100% fixed
+            collectionView.backgroundColor = item?.backgroundColor
         }
     }
     
@@ -23,7 +24,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegateFlowLayout
         cV.translatesAutoresizingMaskIntoConstraints = false
         cV.register(TextCell.self, forCellWithReuseIdentifier: TextCell.cellId)
         cV.register(DetailCell.self, forCellWithReuseIdentifier: DetailCell.cellId)
-        cV.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cV.delegate = self
         cV.dataSource = self
         return cV
